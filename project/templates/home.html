@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+
+    <title>Actecal</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/x-icon" href="../static/actecal_fav.jpg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+    <style>
+.glow {
+  font-size: 20px;
+  color: rgb(37, 172, 160);
+  
+  animation: glow 0.9s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgb(85, 77, 77), 0 0 20px rgb(228, 74, 74), 0 0 30px #3a3d3c, 0 0 40px #bbc2c4, 0 0 50px #aadbdb, 0 0 60px #beb3b9, 0 0 70px #806b75;
+  }
+  
+  to {
+    text-shadow: 0 0 20px rgb(15, 116, 102), 0 0 30px #0d9450, 0 0 40px #299ca0, 0 0 50px #1ea099, 0 0 60px #09c0b7, 0 0 70px #09c0b7, 0 0 80px #09c0b7;
+  }
+}
+
+
+
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {
+            height: 450px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+
+        .mySlides {display:none;}
+
+
+        .footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: rgb(5, 126, 86);
+   color: white;
+   text-align: center;
+}
+
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* Style the icon bar links */
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 7px;
+}
+
+/* Style the social media icons with color, if you want */
+.fa {
+  padding: 2px;
+  font-size: 10px;
+  width: 10px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: #125688;
+  color: white;
+}
+
+
+
+
+
+
+  #section1 {padding-top:50px;height:500px;color: #fff; background-color: #1ea89d;}
+  #section2 {padding-top:50px;height:500px;color: #fff; background-color: #ec9146;}
+  #section3 {padding-top:50px;height:500px;color: #fff; background-color: #e49c31;}
+  #section41 {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+  #section42 {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+    </style>
+</head>
+
+<body>
+  <!-- {% if session.email %}
+    You are successfully logged in our website as  {{ session.email }}
+     So start learning, Best of luck! <a href="/
+    ">logout</a>.
+ {% else %}
+    You are not Register. <a href="/auth.studentlogin">login</a>.
+ {% endif %} -->
+
+
+
+  <p><svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
+    
+  </svg><i class="bi bi-graph-up-arrow"> <b> <span style="color:rgb(12, 97, 153)">Let's learn with <span class="glow">Actecal</span></b></i></p>
+  
+
+      
+  <div class="w3-bar w3-light-grey w3-border w3-small">
+        <a href="#" class="w3-bar-item w3-button "><i class="fa fa-home"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-globe"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-sign-in"></i></a>
+        
+        <button  class="w3-button w3-black w3-round-xlarge" style="margin-left:900px" ><a href="{{  url_for('main.register')}}" style="color:white">Register</a></button>
+        <button  class="w3-button w3-black w3-round-xlarge" ><a href="{{  url_for('main.studentlogin')}}" style="color:white">Login</a></button>
+  </div><button  class="w3-button w3-black w3-round-xlarge" ><a href="{{  url_for('auth.addany')}}" style="color:white">addany</a></button>
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <a href="#" class="w3-bar-item w3-button">Creative computing</a>
+  <a href="#" class="w3-bar-item w3-button">web Designing</a>
+  <a href="#" class="w3-bar-item w3-button">JavaScript</a>
+  <a href="#" class="w3-bar-item w3-button">RUBY</a>
+  <a href="#" class="w3-bar-item w3-button">LUA</a>
+  <a href="#" class="w3-bar-item w3-button">C</a>
+  <a href="#" class="w3-bar-item w3-button">C+</a>
+  <a href="#" class="w3-bar-item w3-button">C++</a>
+  <a href="#" class="w3-bar-item w3-button">TCL</a>
+  <a href="#" class="w3-bar-item w3-button">Matlab</a>
+  <a href="#" class="w3-bar-item w3-button">SQL</a>
+  <a href="#" class="w3-bar-item w3-button">MYSQL</a>
+  <a href="#" class="w3-bar-item w3-button">PHP</a>
+  <a href="#" class="w3-bar-item w3-button">FOXPRO</a>
+  <a href="#" class="w3-bar-item w3-button">JAVA</a>
+  <a href="#" class="w3-bar-item w3-button">Full-stack</a>
+  <a href="#" class="w3-bar-item w3-button">HTML</a>
+  <a href="#" class="w3-bar-item w3-button">#CSS</a>
+  <a href="#" class="w3-bar-item w3-button">PYTHON</a>
+ 
+</div>
+
+<!-- Page Content -->
+<div class="w3-teal">
+  <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()">☰</button>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">MYSQL</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">FOREIGN_KEY</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">TAble</a>
+      <a href="#" class="w3-bar-item w3-button">ROW</a>
+      <a href="#" class="w3-bar-item w3-button">CONNECT</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">PHP</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">REMOVE-DATA</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">HTML</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">PARAGRAPH_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">ANCHOR_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">HEADINGS</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">JavaScript</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">FUNCTIONS</a>
+      <a href="#" class="w3-bar-item w3-button">LOOPS</a>
+      <a href="#" class="w3-bar-item w3-button">IF OR WHILE</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">CSS</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">EXTERNAL.CSS</a>
+      <a href="#" class="w3-bar-item w3-button">INTERNAL.CSS</a>
+      <a href="#" class="w3-bar-item w3-button">CLASSES</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">C</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">FOREIGN_KEY</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">TAble</a>
+      <a href="#" class="w3-bar-item w3-button">ROW</a>
+      <a href="#" class="w3-bar-item w3-button">CONNECT</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">C+</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">REMOVE-DATA</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">C++</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">PARAGRAPH_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">ANCHOR_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">HEADINGS</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">Java</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">FUNCTIONS</a>
+      <a href="#" class="w3-bar-item w3-button">LOOPS</a>
+      <a href="#" class="w3-bar-item w3-button">IF OR WHILE</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">PYTHON</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">EXTERNAL.CSS</a>
+      <a href="#" class="w3-bar-item w3-button">INTERNAL.CSS</a>
+      <a href="#" class="w3-bar-item w3-button">CLASSES</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">FLASK</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">FOREIGN_KEY</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">TAble</a>
+      <a href="#" class="w3-bar-item w3-button">ROW</a>
+      <a href="#" class="w3-bar-item w3-button">CONNECT</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">LUA</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">CREATE_DATABASE</a>
+      <a href="#" class="w3-bar-item w3-button">UPDATE_DATA</a>
+      <a href="#" class="w3-bar-item w3-button">REMOVE-DATA</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">C#</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">PARAGRAPH_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">ANCHOR_TAG</a>
+      <a href="#" class="w3-bar-item w3-button">HEADINGS</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button class="w3-button">HASKELL</button>
+    <div class="w3-dropdown-content w3-bar-block w3-border">
+      <a href="#" class="w3-bar-item w3-button">FUNCTIONS</a>
+      <a href="#" class="w3-bar-item w3-button">LOOPS</a>
+      <a href="#" class="w3-bar-item w3-button">IF OR WHILE</a>
+    </div>
+  </div>
+  <div class="w3-dropdown-hover">
+    <button  class="w3-button w3-black w3-round-xlarge" ><a href="{{  url_for('main.ourcourses')}}" style="color:white">Our Courses</a></button>
+    
+    </div>
+  </div>
+</div>
+<div data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <nav class="navbar navbar-inverse ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="#">Actecal</a>
+      </div>
+      <div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="#section1">Kids codding</a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Database management <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#section41">MYSQL</a></li>
+                <li><a href="#section42">Sqlite</a></li>
+              </ul>
+            </li>
+
+
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Frontend <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#section41">Html</a></li>
+                <li><a href="#section42">CSS</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Backend<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#section41">PYTHON</a></li>
+                <li><a href="#section42">javascript</a></li>
+              </ul>
+            </li>            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>    
+  
+  <div id="section1" class="container-fluid" style="position:relative">
+    <div id="London" class="w3-container city ">
+       
+      <p ><h3 style="color:rgb(235, 64, 21);">What is Full Stack Web Development and why is it important to learn?</h3></p>
+     <p>Ans:Full Stack Development is a software profession/stream where a developer deals with both the Frontend (client-side) </p>
+     <p>Backend (server-side) of a tech product. A Full Stack Developer is proficient in several technologies that help in developing </p>
+     <p>  a robust tech product,and thus play a major role in making decisions for the company. It is one of the high-demand jobs in the software industry.</p>
+     <p ><h3 style="color:rgb(238, 81, 8);">What is the job of a Full Stack Developer?</h3></p>
+     <p>Full-stack developers develop both the front-end and the server-side of the application, deploy,</p>
+        <p>debug and maintain their databases and servers. Being a Full Stack Web Developer,</p> 
+<p>you will be at an edge as you make better technical decisions and see the big picture.</p>
+
+     <p> <h3 style="color:rgb(235, 76, 14);"> What skills are required to become a Full Stack Developer?</h3></p>
+      <p>As a Full Stack Developer, you become the jack of all techs, which means you must learn and be proficient in:</p>
+      <p>HTML, CSS, UI & UX, JavaScript, etc.
+        Server-side languages such as Java, Python, Node.js, Or Golang, etc.
+        Frameworks Express, Spring Boot, Django, etc.</p>
+      <p>Along with an understanding of System Design, Data Structures and Algorithms, Databases, and version control systems like Git.</p>
+    </div>
+  </div>
+
+
+  <div id="section2" class="container-fluid">
+
+    <div class="w3-container">
+      <h1></h1>
+    
+      <div class="w3-panel w3-sand w3-leftbar">
+        <p><i class="fa fa-quote-right w3-xxlarge w3-opacity"></i><br>
+        <i class="w3-serif w3-xlarge">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non massa vitae risus fermentum ullamcorper. Phasellus risus urna, ornare in aliquam id, porttitor sit amet sapien. Nulla facilisi.</i></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div id="section3" class="container-fluid">
+    <div class="w3-container">
+      <h2></h2>
+      <p>The w3-panel class can be used to display quotes:</p>
+    
+      <div class="w3-panel w3-leftbar w3-sand">
+        <p class="w3-xxlarge w3-serif"><i>"Make it as simple as possible, but not simpler."</i></p>
+        <p>Albert Einstein</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="section41" class="container-fluid">
+    <h1>JavaScript </h1>
+    <div class="w3-panel w3-center w3-leftbar w3-sand">
+      <p><i class="w3-serif w3-xlarge">
+      <span style="font-size:150px;line-height:0.6em;opacity:0.2">✔</span>
+      Programming in C will slowly decline.<br>
+      Programming in JavaScript will be more important.</i></p>
+    </div>
+    </div>
+          
+  </div>
+
+
+
+
+
+<!-- CARDS -->
+<div style="display:flex">
+<div class="w3-container">
+  <h2 class="glow">DATABASES</h2>
+  <p></p>
+
+  <div class="w3-card-4" style="width:50%;" >
+    <header class="w3-container " style="background-color:#0fce95">
+      <h1>MYSQL</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#1bb38d">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+
+
+<div class="w3-container">
+  <p></p>
+  <br> <br>
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#1facb6">
+      <h1>PHP</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#1facb6">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+</div>
+
+<div style="display:flex">
+<div class="w3-container">
+  <h2 class="glow">LANGUAGES</h2>
+
+
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#dda62f">
+      <h1>JAVA</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#dda62f">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+
+<div class="w3-container">
+ 
+  
+  <br> <br>
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#87dd25">
+      <h1>PYTHON</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#87dd25">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+</div>
+
+<div style="display:flex">
+<div class="w3-container">
+  
+  <br>
+
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#e05a31">
+      <h1>C+</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#cf4e2d">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+
+<div class="w3-container">
+
+  <br> <br>
+
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#95b933">
+      <h1>C++</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#819125">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+</div>
+
+
+<div style="display:flex">
+<div class="w3-container">
+  <h2 class="glow">FRONTEND</h2>
+  <p></p>
+
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container" style="background-color:#37bcce">
+      <h1>HTML</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container " style="background-color:#37bcce">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+
+<div class="w3-container">
+  <h2></h2>
+  <br> <br>
+  <div class="w3-card-4" style="width:50%;">
+    <header class="w3-container " style="background-color:#1cad82">
+      <h1>CSS</h1>
+    </header>
+
+    <div class="w3-container">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <footer class="w3-container" style="background-color:#1cad82">
+      <h5></h5>
+    </footer>
+  </div>
+</div>
+</div><br>
+<br>
+<!-- CARDS -->
+
+
+<!-- 
+crousels
+<div class="container">
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+ Indicators -->
+    <!-- <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol> -->
+
+    <!-- Wrapper for slides -->
+    <!-- <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="../static/actecal_img.jpg" alt="Los Angeles" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Startup Uttrakhand</h3>
+          <p>Grand challenge 2021</p>
+        </div>
+      </div> -->
+<!-- 
+      <div class="item">
+        <img src="../static/Actecal_logo.jpg" alt="Chicago" style="height:50%;">
+        <div class="carousel-caption">
+          <h3>Actecal</h3>
+          <p>Briging the Skill</p>
+        </div>
+      </div> -->
+    
+      <!-- <div class="item">
+        <img src="../static/actecal_fav.jpg" alt="New York" style="height:50%;">
+        <div class="carousel-caption">
+          <h3>Actecal</h3>
+          <p>Briging the Skill!</p>
+        </div>
+      </div>
+  
+    </div> -->
+
+    <!-- Left and right controls -->
+    <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+</div>
+ --> 
+
+
+<!-- crousels -->
+
+
+
+
+
+
+      
+
+        
+            
+            
+
+        <!-- Footer -->
+        <footer class="footer" style="background-color:rgb(4, 116, 91); height: 70px;;">
+
+                <form >
+                  <input  type="text" placeholder="Search"
+                    aria-label="Search">
+                  <i  aria-hidden="true"></i>
+                
+                  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
+                </form>
+                <a href="#" class="fa fa-facebook"></a>
+<a href="#" class="fa fa-twitter"></a>
+<a href="#" class="fa fa-google"></a>
+<a href="#" class="fa fa-linkedin"></a>
+<a href="#" class="fa fa-youtube"></a>
+<a href="#" class="fa fa-instagram"></a>
+
+              
+          <!-- Copyright -->
+          <div>© 2022 Copyright:
+            <a href="https://en.wikipedia.org/wiki/Copyright_law_of_India"> @Actecal Pvt.lmt</a>
+          </div>
+          <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+<script>
+          function w3_open() {
+            document.getElementById("mySidebar").style.display = "block";
+          }
+          
+          function w3_close() {
+            document.getElementById("mySidebar").style.display = "none";
+          }
+</script>
+
+<script>
+        function openCity(cityName) {
+          var i;
+          var x = document.getElementsByClassName("city");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";  
+          }
+          document.getElementById(cityName).style.display = "block";  
+        }
+
+
+      
+
+
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+</script>
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{% extends "base.html"  %}
+{% block title %} Show Camp Date {% endblock %}
+{% block content %}
+<div>
+    <h1 class="center">These are some courses which we provide to learners</h1>
+
+
+{% from product in product_det %}
+<div class="main">
+<div class="content">
+      t
+      <h2 class="center">{{product.location}}</h2>
+      <img src="{{product.image}}" alt="{{product.filename}}"><br>
+      <h2 class="center">{{product.date}}</h2>
+      
+</div>
+</div>
+
+
+<div class="w3-container">
+    <h2>Actecal pvt lmtd</h2>  
+    <table class="w3-table">
+      <tr>
+        <th>Sr.No.</th>
+        <th>Courses</th>
+        <th>Duration</th>
+        <th>Fees</th>
+        <th>image</th>
+        <th>desc</th>
+      </tr>
+      <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.courses}}</td>
+        <td>{{product.duration}}</td>
+        <td>{{product.fee}}</td>
+        <td><img src="{{product.image}}" alt="{{product.filename}}"><td>
+        <td>{{product.disc}}</td>
+      </tr>
+
+    </table>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}

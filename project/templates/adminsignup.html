@@ -1,0 +1,21 @@
+{% exteds "base.html" %}
+{% block title %} Signup {% endblock %}
+
+{% block content %}
+
+<form acton="/adminsignup" method="POST">
+
+    <label>Username:
+        <input type="text" name="aname">
+
+    </label><br>
+
+<label>Password :
+    <input type="password" name="apaswd">
+    <br>
+   
+</label>
+<input type="submit" value="signup">
+
+</form>
+{% endblock %}      

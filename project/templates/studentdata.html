@@ -1,0 +1,94 @@
+<html>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<div class="w3-container">
+  <h2>Actecal</h2>
+
+  <div class="w3-card-4" style="width:100%">
+    <header class="w3-container w3-light-grey">
+      <h3>Student</h3>
+    </header>
+    <div class="w3-container">
+      <p></p>
+      <hr>
+      <img src="../static/pictures/actecal_fav.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <p></p><br>
+    </div>
+    <h2>Read More Read Less Button</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+    <div class="w3-container">
+
+        <h2>Responsive Table</h2>
+        <div class="w3-responsive">
+        <table class="w3-table-all">
+        <tr>
+          <th>Student Name</th>
+          <th>Contact No.</th>
+          <th>Adress</th>
+          <th>desc</th>
+          <th>course</th>
+          <th>courseoints</th>
+          <th>courses</th>
+          <th>courses</th>
+        </tr>
+        <tr>
+          <td>Jill</td>
+          <td>Smith</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+          <td>50</td>
+        </tr>
+        <tr>
+          <td>Eve</td>
+          <td>Jackson</td>
+          <td>94</td>
+          <td>94</td>
+          <td>94</td>
+          <td>94</td>
+          <td>94</td>
+          <td>94</td>
+          <td>94</td>
+        </tr>
+        <tr>
+          <td>Adam</td>
+          <td>Johnson</td>
+          <td>67</td>
+          <td>67</td>
+          <td>67</td>
+          <td>67</td>
+          <td>67</td>
+          <td>67</td>
+          <td>67</td>
+        </tr>
+        </table>
+        </div>
+
+    <button class="w3-button w3-block w3-dark-grey" onclick="myFunction()" id="myBtn">+Read more</button>
+  </div>
+</div>
+<script>
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
+    
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more"; 
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less"; 
+        moreText.style.display = "inline";
+      }
+    }
+    </script>
+</body>
+</html>
